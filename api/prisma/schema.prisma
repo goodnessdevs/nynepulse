@@ -1,0 +1,103 @@
+generator client {
+  provider = "prisma-client-js"
+  output = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum DeviceStatus {
+  ONLINE
+  OFFLINE
+  IDLE
+}
+
+enum CommandStatus {
+  PENDING
+  DELIVERED
+  ACKNOWLEDGED
+  FAILED
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  phone        String?
+  role         Role     @default(USER)
+  createdAt    DateTime @default(now())
+
+  devices Device[]
+}
+
+// A device may have many commands, telemetries, and alerts.
+model Device {
+  id         String       @id @default(cuid())
+  name       String
+  type       String
+  token      String       @unique @default(cuid())
+  status     DeviceStatus @default(OFFLINE)
+  lastSeenAt DateTime?
+  metadata   Json?
+  userId     String
+  createdAt  DateTime     @default(now())
+
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  telemetry Telemetry[]
+  commands  Command[]
+  alerts    Alert[]
+
+  @@index([userId])
+  @@index([status])
+}
+
+// one-to-many relationship between a device and a telemetry
+model Telemetry {
+  id        String   @id @default(cuid())
+  deviceId  String
+  payload   Json
+  createdAt DateTime @default(now())
+
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@index([deviceId])
+  @@index([createdAt])
+}
+
+// one-to-many relationship between a device and a command
+model Command {
+  id          String        @id @default(cuid())
+  deviceId    String
+  instruction String
+  status      CommandStatus @default(PENDING)
+  sentAt      DateTime      @default(now())
+  ackedAt     DateTime?
+
+  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)
+
+  @@index([deviceId])
+}
+
+// one-to-many relationship between a device and an alert
+model Alert {
+  id       String   @id @default(cuid())
+  deviceId String
+  message  String
+  sentAt   DateTime @default(now())
+
+  device Device @relation(fields: [deviceId], references: [id])
+}
+
+model Firmware {
+  id         String   @id @default(cuid())
+  version    String
+  deviceType String
+  fileUrl    String
+  uploadedAt DateTime @default(now())
+}

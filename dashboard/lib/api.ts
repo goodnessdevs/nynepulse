@@ -1,0 +1,12 @@
+import axios from 'axios';
+
+if (!process.env.NEXT_PUBLIC_API_URL) {
+    console.log('NEXT_PUBLIC_API_URL is not configured in env')
+}
+
+export const api = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL });
+
+
+export const setAuthToken = (token: string) => {
+    api.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+};
