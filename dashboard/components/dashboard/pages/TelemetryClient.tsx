@@ -123,7 +123,7 @@ export default function TelemetryClient() {
             <p className="text-sm font-medium text-zinc-900 dark:text-zinc-100 mb-4 capitalize">
               {key}
             </p>
-            <div className="h-[180px] w-full">
+            <div className="h-45 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={history}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#f0ede6" />
@@ -151,5 +151,5 @@ export default function TelemetryClient() {
         ))}
       </div>
     </>
-
+  )
 }

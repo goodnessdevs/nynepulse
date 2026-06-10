@@ -252,5 +252,5 @@ export default function FirmwareClient() {
         </div>
       </div>
     </>
-
+  )
 }

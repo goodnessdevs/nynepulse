@@ -57,7 +57,7 @@ export default function AlertsClient() {
               if (d) selectDevice(d);
             }}
           >
-            <SelectTrigger className="h-9 border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-lg text-sm outline-none px-3 py-1.5 flex-1 sm:w-[200px]">
+            <SelectTrigger className="h-9 border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-700 dark:text-zinc-300 rounded-lg text-sm outline-none px-3 py-1.5 flex-1 sm:w-50">
               <SelectValue placeholder="Select device..." />
             </SelectTrigger>
             <SelectContent>
@@ -108,5 +108,5 @@ export default function AlertsClient() {
         </div>
       </div>
     </>
-
+  )
 }
