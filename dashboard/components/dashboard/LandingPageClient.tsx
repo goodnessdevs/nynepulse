@@ -33,6 +33,7 @@ export default function LandingPage() {
   });
   const [prev, setPrev] = useState({ temp: 36.5, hum: 72.0, volt: 219.4 });
   const [uptime, setUptime] = useState(0);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const tele = setInterval(() => {
@@ -80,14 +81,16 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-[#0C0F0A] text-[#E8F0E4]">
       {/* Nav */}
-      <nav className="flex items-center justify-between px-12 py-4 border-b border-[#1A2E1A]">
+      <nav className="flex items-center justify-between px-6 md:px-12 py-4 border-b border-[#1A2E1A]">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#3D6B55] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-lg bg-[#3D6B55] flex items-center justify-center shrink-0">
             <span className="text-white text-xs font-medium">N9</span>
           </div>
           <span className="text-sm font-medium">NynePulse</span>
         </div>
-        <div className="flex items-center gap-6">
+
+        {/* Desktop nav */}
+        <div className="hidden md:flex items-center gap-6">
           <a
             href="https://github.com"
             target="_blank"
@@ -109,25 +112,67 @@ export default function LandingPage() {
             Dashboard →
           </Link>
         </div>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden flex flex-col gap-1.5 p-1"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          <span
+            className={`w-5 h-0.5 bg-[#4A5E47] transition-all ${menuOpen ? "rotate-45 translate-y-2" : ""}`}
+          />
+          <span
+            className={`w-5 h-0.5 bg-[#4A5E47] transition-all ${menuOpen ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`w-5 h-0.5 bg-[#4A5E47] transition-all ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`}
+          />
+        </button>
       </nav>
 
+      {/* Mobile menu */}
+      {menuOpen && (
+        <div className="md:hidden flex flex-col gap-4 px-6 py-5 border-b border-[#1A2E1A] bg-[#0A130A]">
+          <a
+            href="https://github.com/goodnessdevs/nynepulse"
+            target="_blank"
+            className="text-sm text-[#4A5E47]"
+          >
+            GitHub
+          </a>
+          <a
+            href="/api/docs"
+            target="_blank"
+            className="text-sm text-[#4A5E47]"
+          >
+            API Docs
+          </a>
+          <Link
+            href="/dashboard"
+            className="text-sm px-4 py-2 bg-[#3D6B55] text-white rounded-xl text-center"
+          >
+            Dashboard →
+          </Link>
+        </div>
+      )}
+
       {/* Hero */}
-      <div className="grid grid-cols-2 gap-16 items-center px-12 pt-20 pb-16 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center px-6 md:px-12 pt-14 md:pt-20 pb-12 md:pb-16 max-w-6xl mx-auto">
         <div>
-          <div className="inline-flex items-center gap-2 text-xs text-[#5CAF85] border border-[#1E3B2A] rounded-full px-3 py-1 mb-8 font-mono">
+          <div className="inline-flex items-center gap-2 text-xs text-[#5CAF85] border border-[#1E3B2A] rounded-full px-3 py-1 mb-6 md:mb-8 font-mono">
             <span className="w-1.5 h-1.5 rounded-full bg-[#5CAF85] animate-pulse" />
             open source · self-hostable
           </div>
-          <h1 className="text-5xl font-medium leading-tight mb-6 tracking-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-5 md:mb-6 tracking-tight">
             IoT device management
             <br />
             <span className="text-[#3D6B55]">built for developers.</span>
           </h1>
-          <p className="text-[#4A5E47] text-sm leading-relaxed mb-10 max-w-sm">
+          <p className="text-[#4A5E47] text-sm leading-relaxed mb-8 md:mb-10 max-w-sm">
             Connect any device, stream telemetry in real time, and send commands
             back — without the complexity of enterprise platforms.
           </p>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
             <Link
               href="/dashboard"
               className="px-5 py-2.5 bg-[#3D6B55] hover:bg-[#4d8a6e] text-white rounded-xl text-sm font-medium transition-colors"
@@ -145,14 +190,14 @@ export default function LandingPage() {
         </div>
 
         {/* Terminal */}
-        <div className="relative pb-7 pr-7">
+        <div className="relative pb-7 pr-0 md:pr-7">
           <div className="bg-[#0A130A] border border-[#1E3B2A] rounded-2xl p-5">
             <div className="flex items-center justify-between mb-5">
               <div className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#5CAF85] animate-pulse inline-block" />
                 <span className="text-xs text-[#5CAF85] font-mono">ONLINE</span>
               </div>
-              <span className="text-xs text-[#2A3D27] font-mono">
+              <span className="text-xs text-[#2A3D27] font-mono truncate ml-2">
                 temperature_sensor · Sensor-01
               </span>
             </div>
@@ -209,7 +254,7 @@ export default function LandingPage() {
           </div>
 
           {/* Command card */}
-          <div className="absolute bottom-0 right-0 bg-[#0A130A] border border-[#1E3B2A] rounded-xl p-3 flex items-center gap-2.5">
+          <div className="absolute bottom-0 right-0 md:right-0 bg-[#0A130A] border border-[#1E3B2A] rounded-xl p-3 flex items-center gap-2.5">
             <div className="w-7 h-7 rounded-lg bg-[#1A2E1A] flex items-center justify-center text-[#5CAF85] text-xs font-mono">
               →
             </div>
@@ -222,7 +267,7 @@ export default function LandingPage() {
       </div>
 
       {/* Features */}
-      <div className="grid grid-cols-3 gap-3 px-12 pb-14 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 px-6 md:px-12 pb-12 md:pb-14 max-w-6xl mx-auto">
         {[
           {
             step: "01 — CONNECT",
@@ -253,7 +298,7 @@ export default function LandingPage() {
       </div>
 
       {/* Stack */}
-      <div className="flex items-center gap-4 flex-wrap px-12 py-8 max-w-6xl mx-auto border-t border-[#1A2A1A]">
+      <div className="flex items-center gap-3 flex-wrap px-6 md:px-12 py-8 max-w-6xl mx-auto border-t border-[#1A2A1A]">
         <span className="text-xs text-[#2A3D27] font-mono mr-2">
           built with
         </span>

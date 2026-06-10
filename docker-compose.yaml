@@ -1,20 +1,27 @@
-# docker-compose.yml
 services:
+  api:
+    build: ./api
+    ports:
+      - "3000:3000"
+    env_file: ./api/.env
+    depends_on:
+      - postgres
+      - redis
+    restart: unless-stopped
+
   postgres:
     image: postgres:15-alpine
     environment:
       POSTGRES_USER: nynepulse
-      POSTGRES_PASSWORD: mysecret
+      POSTGRES_PASSWORD: secret
       POSTGRES_DB: nynepulse
-    ports:
-      - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
 
   redis:
     image: redis:7-alpine
-    ports:
-      - "6379:6379"
+    restart: unless-stopped
 
 volumes:
   pgdata:
