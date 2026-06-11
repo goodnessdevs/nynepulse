@@ -28,6 +28,7 @@ RUN pnpm install --prod
 
 # Copy built output
 COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/src/generated ./src/generated
 
 # Copy prisma for migrate deploy at startup
 COPY --from=builder /app/prisma ./prisma
