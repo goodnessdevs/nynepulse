@@ -39,12 +39,12 @@ exports.Prisma = Prisma
 exports.$Enums = {}
 
 /**
- * Prisma Client JS version: 7.4.1
- * Query Engine version: 55ae170b1ced7fc6ed07a15f110549408c501bb3
+ * Prisma Client JS version: 7.8.0
+ * Query Engine version: 3c6e192761c0362d496ed980de936e2f3cebcd3a
  */
 Prisma.prismaVersion = {
-  client: "7.4.1",
-  engine: "55ae170b1ced7fc6ed07a15f110549408c501bb3"
+  client: "7.8.0",
+  engine: "3c6e192761c0362d496ed980de936e2f3cebcd3a"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -205,8 +205,8 @@ exports.Prisma.ModelName = {
  */
 const config = {
   "previewFeatures": [],
-  "clientVersion": "7.4.1",
-  "engineVersion": "55ae170b1ced7fc6ed07a15f110549408c501bb3",
+  "clientVersion": "7.8.0",
+  "engineVersion": "3c6e192761c0362d496ed980de936e2f3cebcd3a",
   "activeProvider": "postgresql",
   "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n}\n\nenum Role {\n  USER\n  ADMIN\n}\n\nenum DeviceStatus {\n  ONLINE\n  OFFLINE\n  IDLE\n}\n\nenum CommandStatus {\n  PENDING\n  DELIVERED\n  ACKNOWLEDGED\n  FAILED\n}\n\nmodel User {\n  id           String   @id @default(cuid())\n  email        String   @unique\n  passwordHash String\n  phone        String?\n  role         Role     @default(USER)\n  createdAt    DateTime @default(now())\n\n  devices Device[]\n}\n\n// A device may have many commands, telemetries, and alerts.\nmodel Device {\n  id         String       @id @default(cuid())\n  name       String\n  type       String\n  token      String       @unique @default(cuid())\n  status     DeviceStatus @default(OFFLINE)\n  lastSeenAt DateTime?\n  metadata   Json?\n  userId     String\n  createdAt  DateTime     @default(now())\n\n  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)\n  telemetry Telemetry[]\n  commands  Command[]\n  alerts    Alert[]\n\n  @@index([userId])\n  @@index([status])\n}\n\n// one-to-many relationship between a device and a telemetry\nmodel Telemetry {\n  id        String   @id @default(cuid())\n  deviceId  String\n  payload   Json\n  createdAt DateTime @default(now())\n\n  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)\n\n  @@index([deviceId])\n  @@index([createdAt])\n}\n\n// one-to-many relationship between a device and a command\nmodel Command {\n  id          String        @id @default(cuid())\n  deviceId    String\n  instruction String\n  status      CommandStatus @default(PENDING)\n  sentAt      DateTime      @default(now())\n  ackedAt     DateTime?\n\n  device Device @relation(fields: [deviceId], references: [id], onDelete: Cascade)\n\n  @@index([deviceId])\n}\n\n// one-to-many relationship between a device and an alert\nmodel Alert {\n  id       String   @id @default(cuid())\n  deviceId String\n  message  String\n  sentAt   DateTime @default(now())\n\n  device Device @relation(fields: [deviceId], references: [id])\n}\n\nmodel Firmware {\n  id         String   @id @default(cuid())\n  version    String\n  deviceType String\n  fileUrl    String\n  uploadedAt DateTime @default(now())\n}\n"
 }
