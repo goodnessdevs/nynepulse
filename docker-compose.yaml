@@ -1,9 +1,11 @@
 services:
   api:
     build: ./api
+    container_name: nynepulse-backend
     ports:
       - "3000:3000"
-    env_file: ./api/.env
+    env_file: 
+     - ./api/.env
     depends_on:
       - postgres
       - redis
