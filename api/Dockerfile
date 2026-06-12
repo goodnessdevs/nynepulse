@@ -46,4 +46,4 @@ COPY --from=builder /app/prisma.config.* ./
 EXPOSE 3000
 
 # Run migrations and start the server
-CMD pnpm prisma migrate deploy && pnpm run start:prod
+CMD ./node_modules/.bin/prisma migrate deploy && pnpm run start:prod 
