@@ -14,6 +14,8 @@ RUN pnpm install
 
 COPY . .
 
+RUN pnpm build
+
 # Runtime stage
 FROM node:20-alpine
 
@@ -25,7 +27,7 @@ RUN npm install -g pnpm
 RUN pnpm install --prod
 
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/generated ./generated
+# COPY --from=builder /app/generated ./generated
 
 EXPOSE 3000
 
