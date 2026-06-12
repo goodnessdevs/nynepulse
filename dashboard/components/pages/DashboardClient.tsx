@@ -32,7 +32,7 @@ export default function DashboardClient() {
   useEffect(() => {
     if (!_hasHydrated) return; // wait for hydration
     if (!token) {
-      router.push("/login");
+      router.push("/sign-in");
       return;
     }
     setAuthToken(token);

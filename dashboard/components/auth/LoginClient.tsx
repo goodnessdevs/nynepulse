@@ -84,7 +84,7 @@ export default function LoginClient() {
 
           <p className="text-xs text-[#4A5E47] text-center">
             Don&apos;t have an account?{" "}
-            <Link href="/signup" className="text-[#5CAF85] hover:underline">
+            <Link href="/sign-up" className="text-[#5CAF85] hover:underline">
               Sign up
             </Link>
           </p>

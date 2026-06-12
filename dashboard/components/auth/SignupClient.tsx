@@ -143,7 +143,7 @@ export default function SignupClient() {
 
           <p className="text-xs text-[#4A5E47] text-center">
             Already have an account?{" "}
-            <Link href="/login" className="text-[#5CAF85] hover:underline">
+            <Link href="/sign-in" className="text-[#5CAF85] hover:underline">
               Sign in
             </Link>
           </p>
