@@ -14,6 +14,9 @@ RUN pnpm install
 
 COPY . .
 
+# Required for prisma generate
+ENV DATABASE_URL="postgresql://user:password@localhost:5432/db?schema=public"
+
 RUN pnpm build
 
 # Runtime stage
@@ -27,7 +30,7 @@ RUN npm install -g pnpm
 RUN pnpm install --prod
 
 COPY --from=builder /app/dist ./dist
-# COPY --from=builder /app/generated ./generated
+COPY --from=builder /app/generated ./generated
 
 EXPOSE 3000
 
