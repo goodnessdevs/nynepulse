@@ -9,7 +9,7 @@ const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
   title: "NynePulse",
-  description: "IoT Device Management",
+  description: "IoT Device Management Platform",
 };
 
 export default function RootLayout({

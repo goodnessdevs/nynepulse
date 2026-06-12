@@ -16,8 +16,9 @@ async function bootstrap() {
   app.use(cookieParser())
 
   app.enableCors({
-    origin: ['http://localhost:3001', 'http://localhost:3000'],
+    origin: [process.env.FRONTEND_URL, 'http://localhost:3001'],
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
   });
 
   app.useGlobalInterceptors(new ResponseInterceptor())
@@ -42,7 +43,7 @@ async function bootstrap() {
 
   await app.listen(3000);
 
-  console.log('NynePulse API running on http://localhost:3000');
-  console.log('Swagger docs at http://localhost:3000/api/docs');
+  console.log('NynePulse API now running on server url');
+  console.log('Swagger docs at /api/docs');
 }
 bootstrap();

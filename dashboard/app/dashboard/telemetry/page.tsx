@@ -1,4 +1,4 @@
-import TelemetryClient from "@/components/dashboard/pages/TelemetryClient";
+import TelemetryClient from "@/components/pages/TelemetryClient";
 
 export default function TelemetryPage() {
   return <TelemetryClient />;

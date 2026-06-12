@@ -1,4 +1,4 @@
-import CommandsClient from "@/components/dashboard/pages/CommandsClient";
+import CommandsClient from "@/components/pages/CommandsClient";
 
 export default function CommandsPage() {
   return <CommandsClient />;

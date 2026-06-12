@@ -1,5 +1,4 @@
-"use client";
-import { Sidebar } from "@/components/dashboard/sidebar";
+import { Sidebar } from "@/components/layout/sidebar";
 
 export default function DashboardLayout({
   children,
@@ -14,5 +13,4 @@ export default function DashboardLayout({
       </div>
     </div>
   );
-
 }
