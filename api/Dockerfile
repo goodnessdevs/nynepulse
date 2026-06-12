@@ -14,7 +14,7 @@ RUN pnpm install
 
 COPY . .
 
-RUN DATABASE_URL='postgresql://neondb_owner:npg_JEAd4DhNuW5T@ep-withered-waterfall-aht49p3d-pooler.c-3.us-east-1.aws.neon.tech/nynepulse?sslmode=verify-full&channel_binding=require' pnpm run build
+RUN DATABASE_URL='postgresql://dummy:dummy@localhost:5432/dummy' pnpm run build
 
 # Runtime stage
 FROM node:20-alpine
