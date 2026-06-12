@@ -8,7 +8,7 @@ RUN npm install -g pnpm
 
 RUN pnpm config set side-effects-cache false
 # This tells pnpm to allow these specific packages to run their install scripts
-RUN pnpm approve-builds @prisma/engines bcrypt
+RUN pnpm approve-builds @prisma/engines@7.8.0 @scarf/scarf@1.4.0 bcrypt@6.0.0 msgpackr-extract@3.0.4
 
 RUN pnpm install
 

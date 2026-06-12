@@ -94,13 +94,15 @@ export default function LandingPage() {
           <a
             href="https://github.com"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-[#4A5E47] hover:text-[#9EC4A8] transition-colors"
           >
             GitHub
           </a>
           <a
-            href="/api/docs"
+            href={`${process.env.NEXT_PUBLIC_API_URL}/api.docs`}
             target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-[#4A5E47] hover:text-[#9EC4A8] transition-colors"
           >
             API Docs
@@ -136,12 +138,14 @@ export default function LandingPage() {
           <a
             href="https://github.com/goodnessdevs/nynepulse"
             target="_blank"
+            rel="noopener noreferrer"
             className="text-sm text-[#4A5E47]"
           >
             GitHub
           </a>
           <a
-            href="/api/docs"
+            href={`${process.env.NEXT_PUBLIC_API_URL}/api.docs`}
+            rel="noopener noreferrer"
             target="_blank"
             className="text-sm text-[#4A5E47]"
           >
