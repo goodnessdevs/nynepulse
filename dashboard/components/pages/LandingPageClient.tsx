@@ -100,7 +100,7 @@ export default function LandingPage() {
             GitHub
           </a>
           <a
-            href={`${process.env.NEXT_PUBLIC_API_URL}/api.docs`}
+            href={`${process.env.NEXT_PUBLIC_API_URL}/api/docs`}
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-[#4A5E47] hover:text-[#9EC4A8] transition-colors"
@@ -144,7 +144,7 @@ export default function LandingPage() {
             GitHub
           </a>
           <a
-            href={`${process.env.NEXT_PUBLIC_API_URL}/api.docs`}
+            href={`${process.env.NEXT_PUBLIC_API_URL}/api/docs`}
             rel="noopener noreferrer"
             target="_blank"
             className="text-sm text-[#4A5E47]"
