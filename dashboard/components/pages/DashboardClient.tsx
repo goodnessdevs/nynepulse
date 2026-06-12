@@ -5,7 +5,6 @@ import { useAuthStore } from "@/store/auth.store";
 import { useDevicesStore, Device } from "@/store/devices.store";
 import { useSocket } from "@/hooks/use-socket";
 import { setAuthToken, api } from "@/lib/api";
-import { Sidebar } from "@/components/layout/sidebar";
 import { Wifi, Cpu, Bell, Terminal, Search, TrendingUp } from "lucide-react";
 
 export default function DashboardClient() {
@@ -103,7 +102,6 @@ export default function DashboardClient() {
 
   return (
     <div className="flex h-screen bg-[#0C0F0A] overflow-hidden">
-      <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
         <header className="flex items-center justify-between px-6 py-4 border-b border-[#1A2E1A]">

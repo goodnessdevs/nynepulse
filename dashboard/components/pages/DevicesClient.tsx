@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import { useAuthStore } from "@/store/auth.store";
 import { useDevicesStore } from "@/store/devices.store";
 import { setAuthToken, api } from "@/lib/api";
-import { Sidebar } from "@/components/layout/sidebar";
 import {
   Dialog,
   DialogContent,
@@ -83,7 +82,6 @@ export default function DevicesPage() {
 
   return (
     <div className="flex h-screen bg-[#0C0F0A] overflow-hidden">
-      <Sidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
         <header className="flex items-center justify-between px-6 py-4 border-b border-[#1A2E1A]">
           <div>
