@@ -92,7 +92,7 @@ export default function LandingPage() {
         {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-6">
           <a
-            href="https://github.com"
+            href="https://github.com/goodnessdevs/nynepulse"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm text-[#4A5E47] hover:text-[#9EC4A8] transition-colors"
