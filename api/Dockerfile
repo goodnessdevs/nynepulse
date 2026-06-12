@@ -30,7 +30,7 @@ RUN npm install -g pnpm
 RUN pnpm install --prod
 
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/generated ./generated
+COPY --from=builder /app/src/generated ./generated
 
 EXPOSE 3000
 
