@@ -14,7 +14,7 @@ RUN pnpm install
 
 COPY . .
 
-RUN DATABASE_URL='postgresql://dummy:dummy@localhost:5432/dummy' pnpm run build
+# RUN DATABASE_URL='postgresql://dummy:dummy@localhost:5432/dummy' pnpm run build
 
 # Runtime stage
 FROM node:20-alpine
