@@ -22,14 +22,20 @@ WORKDIR /app
 
 RUN npm install -g pnpm
 
+# 1. Copy the build artifact and its dependencies
 COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/src/generated ./src/generated
-COPY --from=builder /app/prisma ./prisma
 COPY --from=builder /app/node_modules ./node_modules
 COPY package.json ./
 
+# 2. Copy the generated client to BOTH expected locations
+COPY --from=builder /app/src/generated ./src/generated
+COPY --from=builder /app/src/generated ./dist/src/generated
+
+# 3. Copy Prisma schemas and configs so migrations can run
+COPY --from=builder /app/prisma ./prisma
+COPY --from=builder /app/prisma.config.* ./
+
 EXPOSE 3000
 
-# CMD ["sh", "-c", "node_modules/.bin/prisma migrate deploy && node dist/main"]
-# Start the production application
-CMD pnpm run start:prod
+# 4. Run migrations right before starting up the production app
+CMD pnpm prisma migrate deploy && pnpm run start:prod
