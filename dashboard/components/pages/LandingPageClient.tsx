@@ -184,7 +184,7 @@ export default function LandingPage() {
               Launch dashboard
             </Link>
             <a
-              href="/api/docs"
+              href={`${process.env.NEXT_PUBLIC_API_URL}/api/docs`}
               target="_blank"
               className="px-5 py-2.5 border border-[#1E3B2A] text-[#4A5E47] hover:text-[#9EC4A8] hover:border-[#3D6B55] rounded-xl text-sm transition-all"
             >
