@@ -30,4 +30,6 @@ COPY package.json ./
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "node_modules/.bin/prisma migrate deploy && node dist/main"]
+# CMD ["sh", "-c", "node_modules/.bin/prisma migrate deploy && node dist/main"]
+# Start the production application
+CMD pnpm prisma migrate deploy && pnpm run start:prod
