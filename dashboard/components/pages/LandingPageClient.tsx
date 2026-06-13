@@ -83,7 +83,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-[#0C0F0A] text-[#E8F0E4]">
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 md:px-12 py-4 border-b border-[#1A2E1A]">
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5 h-8 w-8">
           <div className="relative">
             <Image
               src={"/favicon.svg"}

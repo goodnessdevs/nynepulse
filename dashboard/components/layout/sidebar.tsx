@@ -47,7 +47,7 @@ export function Sidebar() {
           className="hidden sm:flex w-8 h-8 rounded-lg bg-[#3D6B55] items-center justify-center mb-4 cursor-pointer shrink-0"
           onClick={() => router.push("/")}
         >
-          <div className="relative">
+          <div className="relative h-8 w-8">
             <Image
               src={"/favicon.svg"}
               alt={"N9"}
