@@ -83,7 +83,7 @@ export default function TelemetryPage() {
   return (
     <div className="flex h-screen bg-[#0C0F0A] overflow-hidden">
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="flex items-center justify-between px-6 py-4 border-b border-[#1A2E1A]">
+        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-[#1A2E1A] gap-4 sm:gap-0">
           <div>
             <h1 className="text-base font-medium text-[#E8F0E4]">Telemetry</h1>
             <p className="text-xs text-[#4A5E47] mt-0.5">
@@ -97,7 +97,7 @@ export default function TelemetryPage() {
               if (d) selectDevice(d);
             }}
           >
-            <SelectTrigger className="w-48 text-xs bg-[#0A130A] border-[#1E3B2A] text-[#E8F0E4]">
+            <SelectTrigger className="w-full sm:w-48 text-xs bg-[#0A130A] border-[#1E3B2A] text-[#E8F0E4]">
               <SelectValue placeholder="Select device..." />
             </SelectTrigger>
             <SelectContent className="bg-[#0A130A] border-[#1E3B2A]">
@@ -114,7 +114,7 @@ export default function TelemetryPage() {
           </Select>
         </header>
 
-        <div className="flex-1 overflow-y-auto px-6 pb-6 pt-4 flex flex-col gap-4">
+        <div className="flex-1 overflow-y-auto px-6 pb-24 sm:pb-6 pt-4 flex flex-col gap-4">
           {!selectedDevice && (
             <div className="flex-1 flex items-center justify-center text-xs text-[#2A3D27] font-mono">
               Select a device to view telemetry history

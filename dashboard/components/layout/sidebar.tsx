@@ -41,42 +41,44 @@ export function Sidebar() {
 
   return (
     <TooltipProvider delayDuration={100}>
-      <aside className="w-14 bg-[#060A06] flex flex-col items-center py-4 gap-1.5 border-r border-[#1A2E1A] shrink-0">
+      <aside className="fixed bottom-0 left-0 w-full h-16 bg-[#060A06] border-t border-[#1A2E1A] flex sm:relative sm:w-14 sm:h-full sm:flex-col sm:border-t-0 sm:border-r items-center py-0 sm:py-4 px-2 sm:px-0 gap-1 sm:gap-1.5 shrink-0 z-50">
         <div
-          className="w-8 h-8 rounded-lg bg-[#3D6B55] flex items-center justify-center mb-4 cursor-pointer shrink-0"
+          className="hidden sm:flex w-8 h-8 rounded-lg bg-[#3D6B55] items-center justify-center mb-4 cursor-pointer shrink-0"
           onClick={() => router.push("/")}
         >
           <span className="text-white font-medium text-xs">N9</span>
         </div>
 
-        {navItems.map(({ icon: Icon, label, href }) => (
-          <Tooltip key={href}>
-            <TooltipTrigger asChild>
-              <button
-                onClick={() => router.push(href)}
-                className={`w-9 h-9 rounded-xl flex items-center justify-center transition-all shrink-0
-                  ${
-                    pathname === href
-                      ? "bg-[#3D6B55] text-white"
-                      : "text-[#2A4025] hover:bg-[#0F1A0C] hover:text-[#5CAF85]"
-                  }`}
+        <div className="flex flex-1 sm:flex-none sm:flex-col items-center justify-around sm:justify-start w-full gap-1 sm:gap-1.5">
+          {navItems.map(({ icon: Icon, label, href }) => (
+            <Tooltip key={href}>
+              <TooltipTrigger asChild>
+                <button
+                  onClick={() => router.push(href)}
+                  className={`w-10 h-10 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center transition-all shrink-0
+                    ${
+                      pathname === href
+                        ? "bg-[#3D6B55] text-white"
+                        : "text-[#2A4025] hover:bg-[#0F1A0C] hover:text-[#5CAF85]"
+                    }`}
+                >
+                  <Icon size={18} className="sm:size-4" />
+                </button>
+              </TooltipTrigger>
+              <TooltipContent
+                side="right"
+                className="hidden sm:block bg-[#0A130A] border-[#1E3B2A] text-[#E8F0E4] text-xs"
               >
-                <Icon size={16} />
-              </button>
-            </TooltipTrigger>
-            <TooltipContent
-              side="right"
-              className="bg-[#0A130A] border-[#1E3B2A] text-[#E8F0E4] text-xs"
-            >
-              {label}
-            </TooltipContent>
-          </Tooltip>
-        ))}
+                {label}
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
 
-        <div className="mt-auto flex flex-col items-center gap-1.5">
+        <div className="flex sm:mt-auto sm:flex-col items-center gap-1 sm:gap-1.5 px-2 sm:px-0">
           <Tooltip>
             <TooltipTrigger asChild>
-              <button className="w-9 h-9 rounded-xl flex items-center justify-center text-[#2A4025] hover:bg-[#0F1A0C] hover:text-[#5CAF85] transition-all">
+              <button className="hidden sm:flex w-9 h-9 rounded-xl items-center justify-center text-[#2A4025] hover:bg-[#0F1A0C] hover:text-[#5CAF85] transition-all">
                 <Settings size={16} />
               </button>
             </TooltipTrigger>
@@ -92,20 +94,20 @@ export function Sidebar() {
             <TooltipTrigger asChild>
               <button
                 onClick={handleLogout}
-                className="w-9 h-9 rounded-xl flex items-center justify-center text-[#2A4025] hover:bg-[#0F1A0C] hover:text-red-400 transition-all"
+                className="w-10 h-10 sm:w-9 sm:h-9 rounded-xl flex items-center justify-center text-[#2A4025] hover:bg-[#0F1A0C] hover:text-red-400 transition-all"
               >
-                <LogOut size={16} />
+                <LogOut size={18} className="sm:size-4" />
               </button>
             </TooltipTrigger>
             <TooltipContent
               side="right"
-              className="bg-[#0A130A] border-[#1E3B2A] text-[#E8F0E4] text-xs"
+              className="hidden sm:block bg-[#0A130A] border-[#1E3B2A] text-[#E8F0E4] text-xs"
             >
               Sign out
             </TooltipContent>
           </Tooltip>
 
-          <div className="w-7 h-7 rounded-full bg-[#3D6B55] flex items-center justify-center text-white text-xs font-medium mt-1 shrink-0">
+          <div className="w-8 h-8 sm:w-7 sm:h-7 rounded-full bg-[#3D6B55] flex items-center justify-center text-white text-xs font-medium shrink-0">
             {initials}
           </div>
         </div>

@@ -8,8 +8,21 @@ import { Toaster } from "sonner";
 const poppins = Poppins({ subsets: ["latin"], weight: ["400"] });
 
 export const metadata: Metadata = {
-  title: "NynePulse",
-  description: "IoT Device Management Platform",
+  title: "NynePulse — IoT Device Management",
+  description:
+    "Self-hostable IoT device management API. Connect any device, stream live telemetry, send commands, and fire threshold alerts.",
+  keywords: ["IoT", "device management", "NestJS", "real-time", "telemetry"],
+  authors: [{ name: "Geenine", url: "https://github.com/goodnessdevs" }],
+  openGraph: {
+    title: "NynePulse",
+    description: "Self-hostable IoT device management for developers.",
+    type: "website",
+  },
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({

@@ -104,7 +104,7 @@ export default function DashboardClient() {
     <div className="flex h-screen bg-[#0C0F0A] overflow-hidden">
       <div className="flex-1 flex flex-col overflow-hidden">
         {/* Header */}
-        <header className="flex items-center justify-between px-6 py-4 border-b border-[#1A2E1A]">
+        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-[#1A2E1A] gap-4 sm:gap-0">
           <div>
             <h1 className="text-base font-medium text-[#E8F0E4]">
               Hello, {user?.email?.split("@")[0]} 👋
@@ -113,15 +113,15 @@ export default function DashboardClient() {
               Monitor and control your connected devices
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 bg-[#0A130A] border border-[#1E3B2A] rounded-full px-3 py-1.5 w-44">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <div className="flex items-center gap-2 bg-[#0A130A] border border-[#1E3B2A] rounded-full px-3 py-1.5 flex-1 sm:w-44">
               <Search size={12} className="text-[#2A3D27]" />
               <input
                 placeholder="Search devices..."
                 className="text-xs bg-transparent outline-none text-[#E8F0E4] placeholder:text-[#2A3D27] w-full"
               />
             </div>
-            <div className="relative">
+            <div className="relative shrink-0">
               <button className="w-8 h-8 rounded-full bg-[#0A130A] border border-[#1E3B2A] flex items-center justify-center text-[#4A5E47]">
                 <Bell size={13} />
               </button>
@@ -132,9 +132,9 @@ export default function DashboardClient() {
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto px-6 pb-6 pt-4">
+        <div className="flex-1 overflow-y-auto px-6 pb-24 sm:pb-6 pt-4">
           {/* Stats */}
-          <div className="grid grid-cols-4 gap-3 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-4">
             {[
               { icon: Cpu, label: "Total devices", value: devices.length },
               { icon: Wifi, label: "Online now", value: onlineCount },
@@ -175,7 +175,7 @@ export default function DashboardClient() {
           </div>
 
           {/* Grid */}
-          <div className="grid grid-cols-[1fr_1fr_240px] gap-3">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_240px] gap-3">
             {/* Device list */}
             <div className="bg-[#0A130A] border border-[#1E3B2A] rounded-2xl p-4">
               <div className="flex items-center justify-between mb-3">

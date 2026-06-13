@@ -79,7 +79,7 @@ export default function FirmwareClient() {
   return (
     <div className="flex h-screen bg-[#0C0F0A] overflow-hidden">
       <div className="flex-1 flex flex-col overflow-hidden">
-        <header className="flex items-center justify-between px-6 py-4 border-b border-[#1A2E1A]">
+        <header className="flex flex-col sm:flex-row items-start sm:items-center justify-between px-6 py-4 border-b border-[#1A2E1A] gap-4 sm:gap-0">
           <div>
             <h1 className="text-base font-medium text-[#E8F0E4]">Firmware</h1>
             <p className="text-xs text-[#4A5E47] mt-0.5">
@@ -89,7 +89,7 @@ export default function FirmwareClient() {
           {isAdmin && (
             <Dialog open={open} onOpenChange={setOpen}>
               <DialogTrigger asChild>
-                <button className="flex items-center gap-2 px-4 py-2 bg-[#3D6B55] hover:bg-[#4d8a6e] text-white text-sm rounded-xl transition-colors">
+                <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-4 py-2 bg-[#3D6B55] hover:bg-[#4d8a6e] text-white text-sm rounded-xl transition-colors">
                   <Upload size={14} /> Upload firmware
                 </button>
               </DialogTrigger>
@@ -172,7 +172,7 @@ export default function FirmwareClient() {
           )}
         </header>
 
-        <div className="flex-1 overflow-y-auto px-6 pb-6 pt-4">
+        <div className="flex-1 overflow-y-auto px-6 pb-24 sm:pb-6 pt-4">
           <div className="bg-[#0A130A] border border-[#1E3B2A] rounded-2xl overflow-hidden">
             <Table>
               <TableHeader>
