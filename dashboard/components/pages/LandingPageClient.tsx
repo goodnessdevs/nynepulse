@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function PulseLine() {
   return (
@@ -83,8 +84,14 @@ export default function LandingPage() {
       {/* Nav */}
       <nav className="flex items-center justify-between px-6 md:px-12 py-4 border-b border-[#1A2E1A]">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#3D6B55] flex items-center justify-center shrink-0">
-            <span className="text-white text-xs font-medium">N9</span>
+          <div className="relative">
+            <Image
+              src={"/favicon.svg"}
+              alt={"N9"}
+              fill
+              priority
+              className="object-cover"
+            />
           </div>
           <span className="text-sm font-medium">NynePulse</span>
         </div>

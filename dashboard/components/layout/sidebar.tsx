@@ -17,6 +17,7 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
+import Image from "next/image";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", href: "/dashboard" },
@@ -46,7 +47,15 @@ export function Sidebar() {
           className="hidden sm:flex w-8 h-8 rounded-lg bg-[#3D6B55] items-center justify-center mb-4 cursor-pointer shrink-0"
           onClick={() => router.push("/")}
         >
-          <span className="text-white font-medium text-xs">N9</span>
+          <div className="relative">
+            <Image
+              src={"/favicon.svg"}
+              alt={"N9"}
+              fill
+              priority
+              className="object-cover"
+            />
+          </div>
         </div>
 
         <div className="flex flex-1 sm:flex-none sm:flex-col items-center justify-around sm:justify-start w-full gap-1 sm:gap-1.5">
